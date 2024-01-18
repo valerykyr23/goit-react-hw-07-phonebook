@@ -3,7 +3,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import Notiflix from 'notiflix';
 
-axios.defaults.baseURL = 'https://644a708a79279846dce8a780.mockapi.io/contacts';
+axios.defaults.baseURL = 'https://65a97721219bfa3718694c4a.mockapi.io/';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
@@ -31,7 +31,7 @@ export const addContact = createAsyncThunk(
         );
         return thunkAPI.rejectWithValue('Contact already exist');
       } else {
-        const { data } = await axios.post('/contacts', { newContact });
+        const { data } = await axios.post('/contacts', newContact );
 
         Notiflix.Notify.success(
           `Contact with name '${newContact.name}' has been added succesfully to contacts list.`

@@ -20,7 +20,7 @@ export const ContactList = () => {
     
     return (
         <ul className={css.contactsList}>
-            {filteredContacts.map(({ id, name, number }) => (<li className={css.contactItem} key={id}><p>{name}:</p> <span>{number}</span> <button className={css.delButton} onClick={() => dispatch(deleteContact(id))} >Delete</button></li>))}
+            {filteredContacts.map(({ id, name, number }) => (<li className={css.contactItem} key={id}><p>{name}:</p> <span>{number}</span> <button className={css.delButton} onClick={() => { dispatch(deleteContact(id)) }} >Delete</button></li>))}
         </ul>
     )
 }

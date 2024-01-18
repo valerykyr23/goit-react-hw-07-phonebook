@@ -1,8 +1,8 @@
 // eslint-disable-next-line
 
-import { nanoid } from '@reduxjs/toolkit';
+// import { nanoid } from '@reduxjs/toolkit';
 import { addContact } from 'components/redux/phonebook-operations';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import css from './ContactForm.module.css';
 
 
@@ -22,13 +22,17 @@ export const ContactForm = () => {
 
     event.preventDefault();
    
-    const newContact = {
-      id: nanoid(),
-      name: name.value,
-      number: number.value
-    };
+    // const newContact = {
+    //   // id: nanoid(),
+    //   name: name.value,
+    //   number: number.value
+    // };
 
-    dispatch(addContact(newContact));
+   
+
+    dispatch(addContact({name: name.value, number: number.value}));
+
+    
 //  contacts.find(contact => contact.name.toLowerCase().includes(name.value.toLowerCase())) ? alert(`${name.value} is already in contacts.`) :
 // dispatch(addContact(newContact));
 
@@ -36,6 +40,7 @@ export const ContactForm = () => {
 
   }
   
+   console.log(useSelector(state => state))
 
   return (
       
