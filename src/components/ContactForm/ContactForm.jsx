@@ -26,7 +26,7 @@ export const ContactForm = () => {
       id: nanoid(),
       name: name.value,
       number: number.value
-    }
+    };
 
     dispatch(addContact(newContact));
 //  contacts.find(contact => contact.name.toLowerCase().includes(name.value.toLowerCase())) ? alert(`${name.value} is already in contacts.`) :

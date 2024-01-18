@@ -2,25 +2,25 @@ import css from "./ContactList.module.css";
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "components/redux/phonebook-operations";
+import {selectContacts, selectFilter} from "components/redux/selectors";
 
 export const ContactList = () => {
     
     const dispatch = useDispatch();
 
-    const filter = useSelector(state => state.filter);
-    const contacts = useSelector(state => state.contacts.items);
-
+//    const friends = useSelector(selectFilteredContacts);
+    const contacts = useSelector(selectContacts);
+    const filter = useSelector(selectFilter);
  
 
-    const filteredListContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+    const filteredContacts = contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase()));
     
     
     
     return (
         <ul className={css.contactsList}>
-            {filteredListContacts.map(({ id, name, number }) => (<li className={css.contactItem} key={id}><p>{name}:</p> <span>{number}</span> <button className={css.delButton} onClick={() => dispatch(deleteContact(id))} >Delete</button></li>))}
+            {filteredContacts.map(({ id, name, number }) => (<li className={css.contactItem} key={id}><p>{name}:</p> <span>{number}</span> <button className={css.delButton} onClick={() => dispatch(deleteContact(id))} >Delete</button></li>))}
         </ul>
     )
 }

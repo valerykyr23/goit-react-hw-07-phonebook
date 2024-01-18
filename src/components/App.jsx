@@ -1,10 +1,22 @@
 import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from "./Filter/Filter";
 import { ContactList } from "./ContactList/ContactList";
+import { useDispatch} from "react-redux";
+import { useEffect } from "react";
+import { fetchContacts } from "./redux/phonebook-operations";
+
 
 
 export const App = () => {
   
+  const dispatch = useDispatch();
+  // const isLoading = useSelector(selectIsLoading);
+  // const error = useSelector(selectError);
+
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch])
     
     return (
       
@@ -25,7 +37,8 @@ export const App = () => {
 
         <h2>Contacts</h2>
 
-        <Filter></Filter>
+        <Filter />
+        {/* {isLoading && !error && "Loading your contacts...."} */}
         <ContactList></ContactList>
         
       </div>
