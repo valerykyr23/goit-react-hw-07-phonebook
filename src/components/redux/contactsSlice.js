@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchContacts,
-  addContacts,
+ addContact,
   deleteContact,
 } from './phonebook-operations';
 
@@ -14,7 +14,7 @@ const contactsSlice = createSlice({
     error: null,
   },
 
-  extraReducers: {
+
     extraReducers: builder => {
       builder
 
@@ -32,15 +32,15 @@ const contactsSlice = createSlice({
           state.error = action.payload;
         })
 
-        .addCase(addContacts.pending, state => {
+        .addCase(addContact.pending, state => {
           state.isLoading = true;
         })
-        .addCase(addContacts.fulfilled, (state, action) => {
+        .addCase(addContact.fulfilled, (state, action) => {
           state.isLoading = false;
           state.error = null;
           state.items.push(action.payload);
         })
-        .addCase(addContacts.rejected, (state, action) => {
+        .addCase(addContact.rejected, (state, action) => {
           state.isLoading = false;
           state.error = action.payload;
         })
@@ -61,7 +61,7 @@ const contactsSlice = createSlice({
           state.error = action.payload;
         });
     },
-  },
+  
 });
 
 
