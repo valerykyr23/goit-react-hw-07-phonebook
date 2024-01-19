@@ -5,20 +5,12 @@ import { filterContacts } from 'components/redux/filterSlice';
 import { selectFilter } from 'components/redux/selectors';
 
 export const Filter = () => {
-
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
 
   const changeFilter = event => {
-    console.log(event.target.value);
     dispatch(filterContacts(event.target.value));
   };
-
-  
-  
-  
-
-  // console.log(useSelector(state => state))
 
   return (
     <div className={css.filterBox}>
@@ -29,7 +21,7 @@ export const Filter = () => {
           className={css.filterInput}
           type="text"
           name="filter"
-           id="filter"
+          id="filter"
           value={filter}
           onChange={changeFilter}
           pattern="^[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż]+(([' \-][a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż])?[a-zA-ZĄąĆćĘęŁłŃńÓóŚśŹźŻż]*)*$"
