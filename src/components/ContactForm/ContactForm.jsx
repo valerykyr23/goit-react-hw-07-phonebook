@@ -2,7 +2,7 @@
 
 // import { nanoid } from '@reduxjs/toolkit';
 import { addContact } from 'components/redux/phonebook-operations';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import css from './ContactForm.module.css';
 
 
@@ -40,7 +40,7 @@ export const ContactForm = () => {
 
   }
   
-   console.log(useSelector(state => state))
+   
 
   return (
       
