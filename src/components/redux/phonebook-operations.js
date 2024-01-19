@@ -24,7 +24,7 @@ export const addContact = createAsyncThunk(
         contacts: { items },
       } = thunkAPI.getState();
 
-      if (items.find(item => item.name === newContact.name)) {
+      if (items.find(item => item.name.toLowerCase() === newContact.name.toLowerCase())) {
         Notiflix.Notify.failure(
           `Contact with name '${newContact.name}' is already in contacts.`
         );
